@@ -1,0 +1,64 @@
+<div id="{{ventanaID}}-ctrl" ng-controller="$ventanaID$-ctrl">
+	<style type="text/css">
+		#{{ventanaID}}-ctrl {
+			background 	: #e9e9e9;
+			width  		: 100%;
+			height 		: 100%;
+		}
+		#{{ventanaID}} .ventana-header {
+			position 	: absolute;
+			top 		:  0;
+			left 		:  5px;
+			right 		:  5px;
+			height 		: 38px;
+			padding   	:  2px;
+		}
+		#{{ventanaID}} .ventana-body {
+			position 	: absolute;
+			scroll-behavior : auto;
+			overflow 		: scroll;
+			left 		:  5px;
+			right 		:  5px;
+			top 		: 40px;
+			bottom 		: 40px;
+			padding 	:  5px;
+		}
+		#{{ventanaID}} .ventana-footer {
+			position 	: absolute;
+			bottom 		:  2px;
+			left 		:  5px;
+			right 		:  5px;
+			height 		: 38px;
+		}
+	</style>
+
+	<div class="ventana-header ventana-header-color">
+	elementos del header
+	</div>
+	<div class="ventana-body ventana-body-color">
+		elementos del body
+		<h3>ID: {{ventanaID}}</h3>
+	</div>
+	<div class="ventana-footer ventana-footer-color">
+		<span class="dropdown pull-left dropup">
+	  		<button class="btn btn-default dropdown-toggle"
+	  				type="button"
+	  				id="{{ventanaID}}-acciones"
+	  				data-toggle="dropdown"
+	  				aria-haspopup="true"
+	  				aria-expanded="false">
+			    Acciones
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="{{ventanaID}}-acciones">
+			    <li><a href="">Acción 1</a></li>
+			    <li><a href="">Acción 2</a></li>
+			    <li><a href="">Acción 3</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="">Acción 4</a></li>
+			  </ul>
+		</span>
+		Elementos del footer
+		<button class="btn btn-default pull-right">Botón</button>
+	</div>
+</div>

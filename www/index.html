@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+	<head>
+		<title>Menú</title>
+    	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/app.css">
+		<!-- estilos -->
+		<script src="/js/angular.min.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery-ui.min.js"></script>
+		<script src="/js/ventana.js"></script>
+		<!-- librerias javascript -->
+		<script src="/app/app.js"></script>
+		<script src="/ctrl/menu-principal-ctrl.js"></script>
+		<!--controladores-->
+	</head>
+	<body>
+		<div ng-controller="menuCtrl" id="menuCtrl" class="menu-principal">
+			<div class="barra-menu-general">
+				<table>
+				<tr>
+					<td class="barra-pantalla">
+						<button ng-click="pantalla_completa()">
+							<span class="glyphicon glyphicon-{{pc_estado}}"></span>
+						</button>
+					</td>	
+					<td class="barra-menu">
+						<button data-toggle 	= "collapse" 
+								data-target 	= "#menu-principal"
+								aria-expanded 	= "false" 
+								aria-controls 	= "menu-principal"
+								id = "boton-menu-principal">
+								<span class = "glyphicon glyphicon-leaf"></span>
+								Menú <span class = "caret"></span>
+						</button>
+					</td>
+					<td class="barra-ventanas" align="left">
+						<ul class = "barra-menu-ventanas" aria-labelledby="dropdown-ventanas-abiertas">
+							<li ng-repeat 	= "l in ventanasAbiertas" 
+								indice 		= "{{ventanasAbiertas.indexOf(l)}}"
+								id 			= "id{{l.nombre}}">
+								<button ng-mouseup="mostrarVentana(l.ventanaID)" title="{{l.nombre}}">
+									<span class="glyphicon glyphicon-{{l.icon}}"></span> {{l.nombre}}
+								</button>
+							</li>
+						</ul>
+					</td>
+					<td class="barra-reloj">
+						<span class="dropdown">
+							<button class="dropdown-toggle"
+					  				type="button"
+					  				id="reloj-calendario"
+					  				data-toggle="dropdown"
+					  				aria-haspopup="true"
+					  				aria-expanded="false">
+								<span>{{reloj | date:'HH:mm'}}</span>
+								<span class="glyphicon glyphicon-calendar"></span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="reloj-calendario">
+								<span>{{reloj | date:'dd/MM/yyyy'}}</span>
+							</div>
+						</span>
+					</td>
+					<td class="barra-notificaciones">
+						<span class="dropdown">
+							<button ng-click="verNotificaciones()">
+								<span class="glyphicon glyphicon-bell"></span>
+								<span class="badge">99+</span>
+							</button>
+							<div class="notificaciones" mostrar="0" tabindex="0">
+								<ul>
+									<li>nota 1</li>
+									<li>nota 2</li>
+									<li>nota 3</li>
+								</ul>
+							</div>
+						</span>
+					</td>
+				</tr>
+				</table>
+			</div>
+
+			
+			<ul class="nav nav-tabs nav-stacked collapse" id="menu-principal">
+				<li ng-repeat="mod in menuPrincipal | filter:mod.padre=9999">
+					<a 	href 			= ""
+						data-toggle 	= "collapse" 
+						data-target 	= "#m{{mod.id}}" 
+						aria-expanded 	= "false" 
+						aria-controls 	= "m{{mod.id}}">
+						{{mod.nombre}}
+					</a>
+					<ul class="collapse" id="m{{mod.id}}">
+						<li ng-repeat="menu0 in menuPrincipal | filtroSubmenu:mod.id">
+							<a 	href=""
+								data-toggle 	= "collapse" 
+								data-target 	= "#m{{menu0.id}}" 
+								aria-expanded 	= "false" 
+								aria-controls 	= "m{{menu0.id}}"
+								ng-href 		= ""
+								ng-mouseup 		= "abrirVentana(menu0.href, menu0.nombre, menu0.id, menu0.icon)"
+								class="ng-a">
+									<span class="glyphicon glyphicon-{{menu0.icon}}"></span>  {{menu0.nombre}}
+							</a>
+							<ul class="collapse" id="m{{menu0.id}}">
+								<li ng-repeat="menu1 in menuPrincipal | filtroSubmenu:menu0.id">
+									<a 	href 			= ""
+										data-toggle 	= "collapse" 
+										data-target 	= "#m{{menu1.id}}" 
+										aria-expanded 	= "false" 
+										aria-controls 	= "m{{menu1.id}}"
+										ng-href 		= "" ng-mouseup="abrirVentana(menu1.href, menu1.nombre, menu1.id, menu1.icon)"
+										class="ng-a">
+											<span class="glyphicon glyphicon-{{menu1.icon}}"></span> {{menu1.nombre}}
+									</a>
+									<ul class="collapse" id="m{{menu1.id}}">
+										<li ng-repeat="menu2 in menuPrincipal | filtroSubmenu:menu1.id">
+											<a ng-href="" ng-mouseup="abrirVentana(menu2.href, menu2.nombre, menu2.id, menu2.icon)"
+											class="ng-a">
+												<span class="glyphicon glyphicon-{{menu2.icon}}"></span> {{menu2.nombre}}
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="escritorio"></div>
+	</body>
+</html>

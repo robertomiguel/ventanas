@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ventanas</title>
+		<link rel="stylesheet" type="text/css" href="/ventanas/css/base/jquery-ui-1.10.4.custom.min.css">
+		<link type="text/css" href="/ventanas/css/jquery.window.css" rel="stylesheet" />
+		<script type="text/javascript" src="/ventanas/js/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="/ventanas/js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script type="text/javascript" src="/ventanas/js/jquery.window.js"></script>
+		<style type="text/css">
+			.escritorio {
+				position: absolute;
+				top: 30px;
+				left: 30px;
+				right: 30px;
+				bottom: 30px;
+				background: cyan;
+				width: auto;
+				height: auto;
+			}
+
+			.sombra {
+				-webkit-box-shadow      : 0 0 8px 4px rgba(0, 0, 0, .5);
+				box-shadow              : 0 0 8px 4px rgba(0, 0, 0, .5);
+			}
+
+			.docker {
+				position: absolute;
+				background: yellow;
+				width: 400px;
+				height: 30px;
+				bottom: 100px;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.window.prepare({
+				   dock: 'bottom',       // change the dock direction: 'left', 'right', 'top', 'bottom'
+				   animationSpeed: 200,  // set animation speed
+				   dockArea: $('.docker'),
+				   minWinLong: 180       // set minimized window long dimension width in pixel
+				});
+			});
+
+			function ventana11() {
+				//$.window.getWindow('window_0').select();
+				//$.window.closeAll();
+				var IDs = [];
+				$(".escritorio").find("[id^=window_]").each(function(){ IDs.push(this.id); });
+				for (i=0;i<IDs.length;i++) {
+					$('#'+IDs[i]).css('z-index','0');
+					$('#'+IDs[i]).removeClass('sombra');
+				}
+				$('#window_0').css('z-index','2');
+				//$.window.getWindow('window_0').select();
+				wnd = $.window.getWindow('window_0');
+				lastSelectedWindow.unselect();
+				wnd.select();
+				//$('#window_0').addClass('sombra');
+
+			}
+			function ventana22() {
+				$.window.getSelectedWindow().close();
+				//$.window.getWindow('window_1').close();
+			}
+			var ventana_id = 0;
+			function ventana1() {
+				$(".escritorio").window({
+				   	icon: 'http://mail.google.com/favicon.ico',
+				   	title: "ventana "+ventana_id,
+				   	content: '<div>contendido '+ventana_id+'</div>',
+				   	checkBoundary: true,
+				   	width: 200,
+				   	height: 160,
+				   	maxWidth: 400,
+				   	maxHeight: 300,
+				   	x: 80,
+				  	y: 80 ,
+			    	onSelect: function(wnd) { //  a callback function while user select the window
+				    	$('#'+wnd.getWindowId()).addClass('sombra');
+   					},
+					onUnselect: function(wnd) { // a callback function while window unselected
+      					$('#'+wnd.getWindowId()).removeClass('sombra');
+					}
+				});
+				ventana_id++;
+			}
+
+		</script>
+
+</head>
+<body>
+	<span>Ventanas</span>
+		<button onclick="ventana1()">abre 1</button>
+		<button onclick="ventana11()">cerrar 1</button>
+		<button onclick="ventana22()">cerrar seleccionada</button><br><br>
+	<div class="escritorio">
+
+	</div>
+		<div class="docker"></div>
+</body>
+</html>
