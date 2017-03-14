@@ -1,0 +1,82 @@
+<div id="form-toolbox-ctrl" ng-controller="form-toolbox-ctrl">
+
+	<div class="ventana-header ventana-header-color">
+	<button ng-click="agregar('input_text','e')">Input Text</button>
+	<button ng-click="agregar('form_boton','e')">Botón</button>
+	<button ng-click="agregar('form_label','e')">Label</button>
+	<button ng-click="agregar('form_combo','e')">Combo</button>
+	<button ng-click="agregar('form_link','e')">Link</button>
+	<button ng-click="agregar('form_recu','e,s')">Recu</button>
+	</div>
+	<div class="ventana-body ventana-body-color">
+		<div class="editar-formulario">
+			<ol id = "selectable-1">
+		        <li class = "ui-widget-content">Product 1</li>
+		        <li class = "ui-widget-content">Product 2</li>
+		        <li class = "ui-widget-content">Product 3</li>
+		        <li class = "ui-widget-content">Product 4</li>
+		        <li class = "ui-widget-content">Product 5</li>
+		        <li class = "ui-widget-content">Product 6</li>
+		        <li class = "ui-widget-content">Product 7</li>
+	      	</ol> 
+		</div>
+	</div>
+	<script type="text/javascript">
+		$('#selectable-1').selectable();
+		$('#selectable-1 li').draggable();
+	</script>
+	<div class="ventana-footer ventana-footer-color">
+		<span class="dropdown dropup">
+	  		<button class="btn btn-default dropdown-toggle"
+	  				type="button"
+	  				id="{{ventanaID}}-acciones"
+	  				data-toggle="dropdown"
+	  				aria-haspopup="true"
+	  				aria-expanded="false">
+			    Acciones
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="{{ventanaID}}-acciones">
+			    <li><a href="">Acción 1</a></li>
+			    <li><a href="">Acción 2</a></li>
+			    <li><a href="">Acción 3</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="">Acción 4</a></li>
+			  </ul>
+		</span>
+		<input type="text" placeholder="nombre...">
+		<button class="btn btn-default">Botón</button>
+		<span>Selección: {{sel}}</span>
+	</div>
+</div>
+<div hidden>
+	<li tabindex="0" class="input_text form_div">
+		<input type="text" placeholder="entrada de texto" />
+	</li>
+
+	<div tabindex="0" class="form_boton form_div">
+		<button class="btn btn-default">Botón</button>
+	</div>
+
+	<div tabindex="0" class="form_label form_div">
+		<label>Descripción</label>
+	</div>
+
+	<div tabindex="0" class="form_combo form_div">
+		<select>
+			<option>opt 1</option>
+			<option>opt 2</option>
+			<option>opt 3</option>
+		</select>
+	</div>
+
+	<div tabindex="0" class="form_link form_div" >
+		<a ng-href="" ng-click="">Link #</a>
+	</div>
+
+	<div tabindex="0" class="form_recu form_div">
+		<fieldset>
+			<legend>x</legend>
+		</fieldset>
+	</div>
+</div>

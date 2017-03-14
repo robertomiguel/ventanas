@@ -1,0 +1,69 @@
+#ventana_41-ctrl {
+	background 	: #e9e9e9;
+	width  		: 100%;
+	height 		: 100%;
+}
+#ventana_41 .ventana-header {
+	position 	: absolute;
+	top 		:  0;
+	left 		:  5px;
+	right 		:  5px;
+	height 		: 38px;
+	padding   	:  2px;
+}
+#ventana_41 .ventana-body {
+	position 	: absolute;
+	scroll-behavior : auto;
+	overflow 		: scroll;
+	left 		:  5px;
+	right 		:  5px;
+	top 		: 40px;
+	bottom 		: 40px;
+	padding 	:  5px;
+}
+#ventana_41 .ventana-footer {
+	position 	: absolute;
+	bottom 		:  2px;
+	left 		:  5px;
+	right 		:  5px;
+	height 		: 38px;
+}
+
+.editar-formulario {
+	position: absolute;
+	top: 0; left: 0;
+	background: none;
+	width: 100%; height: 100%;
+}
+
+.form_div {
+	position: absolute;
+	border: none;
+	top: 0; left: 0;
+	width: 80px;
+	height: 22px;
+	cursor: move;
+	overflow: hidden;
+}
+.form_div:hover {
+	border: solid 1px black;
+}
+.input_text input, 	.form_div button,
+.form_div select {
+	width: 100%; height: 100%; z-index: 2;
+}
+.form_div fieldset {
+	z-index: 0; width: auto; height: 100%;
+}
+
+  #selectable-1 .ui-selecting { background: #707070 ; }
+         #selectable-1 .ui-selected { background: #EEEEEE; color: #000000; }
+         #selectable-1 { list-style-type: none; margin: 0; 
+            padding: 0; width: 20%; }
+         #selectable-1 li { margin: 3px; padding: 0.4em; 
+            font-size: 16px; height: 18px; }
+         .ui-widget-content {
+            background: #cedc98;
+            border: 1px solid #DDDDDD;
+            color: #333333;
+         }

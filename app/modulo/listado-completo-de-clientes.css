@@ -1,0 +1,74 @@
+#ventana_19-ctrl {
+	background 	: #e9e9e9;
+	width  		: 100%;
+	height 		: 100%;
+}
+#ventana_19 .ventana-header {
+	position 	: absolute;
+	top 		:  0;
+	left 		:  5px;
+	right 		:  5px;
+	height 		: 38px;
+	padding   	:  2px;
+}
+#ventana_19 .ventana-body {
+	position 	: absolute;
+	scroll-behavior : auto;
+	overflow 		: scroll;
+	left 		:  5px;
+	right 		:  5px;
+	top 		: 40px;
+	bottom 		: 40px;
+	padding 	:  5px;
+}
+#ventana_19 .ventana-footer {
+	position 	: absolute;
+	bottom 		:  2px;
+	left 		:  5px;
+	right 		:  5px;
+	height 		: 38px;
+}
+
+#ventana_19 li span:hover  {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.listado_completo_clientes {
+	width: 100%;
+	border: solid 1px #e9e9e9;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+}
+.listado_completo_clientes td {
+	text-align: right;
+	padding-right: 15px;	text-transform: capitalize;
+	  	overflow: hidden;
+}
+
+.listado_completo_clientes th {
+	padding-left: 15px;  	overflow: hidden;
+}
+
+.listado_completo_clientes tr:nth-child(even)  {
+	background: #e9e9e9;
+}
+
+/*
+.listado_completo_clientes tr:hover {
+	background: cyan; color: black;
+}
+*/
+.input_text {
+	background      : none;
+	border          : 0;
+	border-bottom   : solid 1px;
+	text-indent     : 5px;
+	height          : 20px;
+	font-size       : 16px;
+}
+
+.input_text:focus {
+	border-bottom   : solid 1px blue;
+}

@@ -3,21 +3,24 @@
 }
 /*.menu-principal button { position: fixed; top: 0; left: 0; z-index: 8001}*/
 #menu-principal {
-	position 			: fixed;
+	position 					: fixed;
 	padding-bottom 		: 30px;
-	padding-top 		: 20px;
+	padding-top 			: 20px;
 	padding-right 		:  5px;
-	top 				: 30px;
-	background 			: #e9e9e9;
-	width 				: 470px;
-	max-height 			: 600px;
+	top 							: 17px;
+	background 				: #e9e9e9;
+	width 						: 470PX;
+	max-height 				: 600px;
 	scroll-behavior 	: auto;
-	overflow-y 			: scroll;
+	overflow-y 				: scroll;
 	-webkit-box-shadow  : 0 6px 12px rgba(0,0,0,0.7);
 	box-shadow          : 0 6px 12px rgba(0,0,0,0.7);
 	/*box-shadow:0 6px 12px rgba(0,0,0,0.7);*/
-	z-index 			: 8000;
+	z-index 					: 8000;
+	border-radius 		: 0 5px 5px 0;
+	overflow 					: auto;
 }
+
 .barra-menu-general button {
 	background: none;
 	border: 0;
@@ -50,7 +53,7 @@
 	text-shadow: 0 1px 0 rgba(255,255,255,0.09);
 	background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0, #EBEBEB),color-stop(0.5, #ECECEC),color-stop(0.5, #F3F3F3),color-stop(1, #FFFFFF));
 	background-image:-moz-linear-gradient( center bottom, #EBEBEB 0%, #ECECEC 50%, #F3F3F3 50%, #FFFFFF 100%);
-	box-shadow:inset 0 1px 0 rgba(255,255,255,1), 0 1px 0 rgba(0,0,0,0.09);	
+	box-shadow:inset 0 1px 0 rgba(255,255,255,1), 0 1px 0 rgba(0,0,0,0.09);
 }*/
 #menu-principal a {
 	font-size 	: 16px;
@@ -86,7 +89,7 @@ background: #e9e9e9;
 }
 .barra-menu-general table {
 	position: absolute;
-	top: 0,
+	top: 0;
 	left: 0;
 	text-align: center;
 	width: 100%;
@@ -99,7 +102,7 @@ background: #e9e9e9;
 	overflow:hidden;
     white-space:nowrap;
 }
-.barra-menu-general .barra-reloj 	{ 
+.barra-menu-general .barra-reloj 	{
 	width: 70px;
 	font-size: 13px;
 	text-align: left;
@@ -111,9 +114,12 @@ background: #e9e9e9;
 	width 		: 70px;
 }
 .barra-menu-general .badge {
-	background: red; color: white; border: 1px solid white;
-	padding-top: 2px; padding-bottom: 1px;
+	background: red; color: white;
+	padding: 3px;
 	vertical-align:  top;
+	border-radius: 50%;
+	font-size: 100%;
+	font-weight: bold;
 }
 .notificaciones {
 	position: fixed;
@@ -125,12 +131,12 @@ background: #e9e9e9;
 	opacity: 0.9;
 	-webkit-transition 	: right 1s;
   	transition 			: right 1s;
-	-webkit-box-shadow::inset 0 1px 0 rgba(255,255,255,.6), -3px 3px 3px 3px rgba(0,0,0,0.56), 0 0 0 3px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.6), -3px 3px 3px 3px rgba(0,0,0,0.56), 0 0 0 3px rgba(0, 0, 0, 0.3);
 	box-shadow:inset 0 1px 0 rgba(255,255,255,.6), -3px 3px 3px 3px rgba(0,0,0,0.56), 0 0 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 5px 0 0 5px;
 }
 
-.barra-menu-general .barra-ventanas button { 
+.barra-menu-general .barra-ventanas button {
 	max-width: 150px; height: 25px;
 	overflow:hidden;
     white-space:nowrap;
@@ -234,4 +240,8 @@ background: #e9e9e9;
 .ventana-animacion {
 	-webkit-transition 	: width 1s, height 1s, top 1s, left 1s, opacity 1s;
     transition 			: width 1s, height 1s, top 1s, left 1s, opacity 1s;
+}
+
+.capital {
+	text-transform: capitalize;
 }

@@ -43,7 +43,8 @@
     });
 
     ventana.resizable({
-      start : function(event, ui) {ventana.removeClass('ventana-animacion')}
+      start : function(event, ui) {ventana.removeClass('ventana-animacion')},
+      handles : 'all'
     });
     ventana.click();
     return '#'+id;

@@ -1,0 +1,66 @@
+<div id="listado-completo-de-clientes-ctrl" ng-controller="listado-completo-de-clientes-ctrl">
+
+	<div class="ventana-header ventana-header-color">
+	Apellido <input type="text" ng-model="buscar.apellido" class="input_text">
+	</div>
+	<div class="ventana-body ventana-body-color">
+		<ul>
+			<li ng-repeat="l in listadoClientes | filter:buscar">
+				<span
+					data-toggle 	= "collapse" 
+					data-target 	= "#cliente_info_{{l.id}}"
+					aria-expanded 	= "false" 
+					aria-controls 	= "cliente_info_{{l.id}}"
+					id="clienteID_{{l.id}}"
+					draggable="true">
+				<span class = "caret"></span> {{l.apellido}}, {{l.nombre}}</span>
+				<div id="cliente_info_{{l.id}}" class="collapse capital">
+				<table class="listado_completo_clientes">
+					<tr>
+						<th>Teléfono 1</th><td>{{l.telefono1}}</td>
+						<th>Documento</th><td>{{l.dni | number}}</td>
+					</tr>
+					<tr>
+						<th>Teléfono 2</th><td>{{l.telefono2}}</td>
+						<th>Fecha Nac.</th><td>{{l.fecha_nac | date:'dd/MM/yyyy'}}</td>
+					</tr>
+					<tr>
+						<th>Dirección</th><td>{{l.direccion}}</td>
+						<th>Fecha de Alta</th><td>{{l.fecha_alta | date:'dd/MM/yyyy HH:mm'}}</td>
+					</tr>
+					<tr>
+						<th>Localidad</th><td>({{l.codigo_postal}}) {{l.localidad}}</td>
+						<th>Fecha de Baja</th><td>{{l.fecha_mod | date:'dd/MM/yyyy HH:mm'}}</td>
+					</tr>
+					<tr>
+						<th>Provincia</th><td>{{l.provincia}}</td>
+						<th>Estado</th><td>{{l.estado}}</td>
+					</tr>
+				</table>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="ventana-footer ventana-footer-color">
+		<span class="dropdown pull-left dropup">
+	  		<button class="btn btn-default dropdown-toggle"
+	  				type="button"
+	  				id="{{ventanaID}}-acciones"
+	  				data-toggle="dropdown"
+	  				aria-haspopup="true"
+	  				aria-expanded="false">
+			    Acciones
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="{{ventanaID}}-acciones">
+			    <li><a href="">Acción 1</a></li>
+			    <li><a href="">Acción 2</a></li>
+			    <li><a href="">Acción 3</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="">Acción 4</a></li>
+			  </ul>
+		</span>
+		Elementos del footer
+		<button class="btn btn-default pull-right">Botón</button>
+	</div>
+</div>

@@ -17,8 +17,8 @@
 		<script src="/js/jquery-ui.min.js"></script>
 		<script src="/js/ventana.js"></script>
 		<!-- librerias javascript -->
-		<script src="/app/app.js"></script>
-		<script src="/ctrl/menu-principal-ctrl.js"></script>
+		<script src="/menu/app/app.js"></script>
+		<script src="/menu/app/menu-principal-ctrl.js"></script>
 		<!--controladores-->
 	</head>
 	<body>
@@ -95,7 +95,7 @@
 						data-target 	= "#m{{mod.id}}" 
 						aria-expanded 	= "false" 
 						aria-controls 	= "m{{mod.id}}">
-						{{mod.nombre}}
+						<span class="glyphicon glyphicon-{{mod.icon}}"></span> {{mod.nombre}}
 					</a>
 					<ul class="collapse" id="m{{mod.id}}">
 						<li ng-repeat="menu0 in menuPrincipal | filtroSubmenu:mod.id">
@@ -107,7 +107,7 @@
 								ng-href 		= ""
 								ng-mouseup 		= "abrirVentana(menu0.href, menu0.nombre, menu0.id, menu0.icon)"
 								class="ng-a">
-									<span class="glyphicon glyphicon-{{menu0.icon}}"></span>  {{menu0.nombre}}
+									<span class="glyphicon glyphicon-{{menu0.icon}}"></span> {{menu0.nombre}}
 							</a>
 							<ul class="collapse" id="m{{menu0.id}}">
 								<li ng-repeat="menu1 in menuPrincipal | filtroSubmenu:menu0.id">
