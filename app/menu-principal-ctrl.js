@@ -1,5 +1,5 @@
 // Controlador del menú y ventanas
-app.controller("menuCtrl", function ($scope, $http, $compile, menuPrincipal, $interval) {
+app.controller("menuCtrl", function ($scope, $http, $compile, $interval) {
     $scope.pc_estado = 'resize-full';
 
     var tiempo = function() {
@@ -12,8 +12,8 @@ app.controller("menuCtrl", function ($scope, $http, $compile, menuPrincipal, $in
       		method  : 'get',
          	url 	: '/menu'
     	 }).then(function successCallback(response) {
-            menuPrincipal.data = response.data;
-            $scope.menuPrincipal = menuPrincipal.data;
+            $scope.menuPrincipal = response.data;
+            response = null;
            }, function errorCallback(response) {
                   alert('Error al cargar menu: ' + response.data);
     });

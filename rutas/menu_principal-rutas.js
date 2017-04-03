@@ -17,10 +17,19 @@ var conexionMySQL = mysql.createConnection({
                       password : 'universal',
                       database : 'universal'
                     });
+var conexion_pana_MySQL = mysql.createConnection({
+                      host     : 'localhost',
+                      user     : 'panadero',
+                      password : 'panadero',
+                      database : 'panaderos'
+                    });
 conexionMySQL.connect(); // Conectar a la DB
+conexion_pana_MySQL.connect();
+
 var crearArchivo      = require('../node_modulos/crearArchivo.js')(fs); // --- Manejo de archivos de las ventanas (.HTML, .CSS, .JS)
 var menuPrincipalSQL  = require('../node_modulos/menuPrincipalSQL.js')(fs, mysql, conexionMySQL); // --- Manejo del menu principal
 var clientesSQL       = require('../node_modulos/menuClientesSQL.js')(fs, mysql, conexionMySQL); // --- Manejo de módulo clientes
+var panaderosSQL      = require('../node_modulos/panaderosSQL.js')(fs, mysql, conexion_pana_MySQL); // --- Manejo de módulo clientes
 
 // --- middleware para control de esta ruta
 router.use(function timeLog(req, res, next) {
@@ -34,7 +43,7 @@ router.post('/', function(req, res) {
        res.send(resultado);
     });
 });
-router.get('/', function(req, res){ 
+router.get('/', function(req, res){
     menuPrincipalSQL.listar(function(resultado){
       res.send(resultado);
     });
@@ -54,20 +63,31 @@ router.post('/crear_plantilla_base', function(req, res) {
 });
 
 // --- Rutas de lanzadores del menu
-router.get('/app/*', function(req, res){ 
+router.get('/app/*', function(req, res){
     res.sendFile(path.resolve (__dirname + '/../app' + req.url.replace('/app','')));
 });
 
-router.post('/app/*', function(req, res){ 
+router.post('/app/*', function(req, res){
     res.sendFile(path.resolve (__dirname + '/../app' + req.url.replace('/app','')));
 });
 
 // --- Clientes
-router.post('/cliente/listadoCompleto', function(req, res){ 
+router.post('/cliente/listadoCompleto', function(req, res){
   clientesSQL.listadoCompleto(function(resultado){
        res.send(resultado);
     });
 });
 
+router.post('/cliente/eXe', function(req, res){
+  panaderosSQL.empleadosXempleador(function(resultado){
+       res.send(resultado);
+    });
+});
+
+router.post('/cliente/listadoPanaderos', function(req, res){
+  panaderosSQL.listadoPanaderos(function(resultado){
+       res.send(resultado);
+    });
+});
 
 module.exports = router;

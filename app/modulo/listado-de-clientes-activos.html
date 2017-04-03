@@ -1,0 +1,48 @@
+<div id="listado-de-clientes-activos-ctrl" ng-controller="listado-de-clientes-activos-ctrl">
+
+	<div class="ventana-header ventana-header-color">
+	elementos del header
+	</div>
+	<div class="ventana-body ventana-body-color">
+		<div class="">
+			Total: {{eXe.length}}
+		</div>
+		<ul>
+			<li class="dropdown" ng-repeat="l in eXe | unique:'empleador_id'"
+				data-toggle 	= "collapse"
+				data-target 	= "#empleados_{{l.empleador_id}}"
+				aria-expanded 	= "false"
+				aria-controls 	= "empleados_{{l.empleador_id}}"
+			>
+				{{$index}}) {{l.empleador_id}}. {{l.empleador}}
+				<ul  class="collapse" id="empleados_{{l.empleador_id}}">
+					<li ng-repeat="e in eXe | mismoEmpleador:l.empleador_id">
+							{{e.empleado_id}}. {{e.empleado}} - ({{e.empleador_id}})
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="ventana-footer ventana-footer-color">
+		<span class="dropdown pull-left dropup">
+	  		<button class="btn btn-default dropdown-toggle"
+	  				type="button"
+	  				id="{{ventanaID}}-acciones"
+	  				data-toggle="dropdown"
+	  				aria-haspopup="true"
+	  				aria-expanded="false">
+			    Acciones
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="{{ventanaID}}-acciones">
+			    <li><a href="">Acción 1</a></li>
+			    <li><a href="">Acción 2</a></li>
+			    <li><a href="">Acción 3</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="">Acción 4</a></li>
+			  </ul>
+		</span>
+		Elementos del footer
+		<button class="btn btn-default pull-right">Botón</button>
+	</div>
+</div>

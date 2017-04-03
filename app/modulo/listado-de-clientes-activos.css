@@ -1,0 +1,30 @@
+#ventana_20-ctrl {
+	background 	: #e9e9e9;
+	width  		: 100%;
+	height 		: 100%;
+}
+#ventana_20 .ventana-header {
+	position 	: absolute;
+	top 		:  0;
+	left 		:  5px;
+	right 		:  5px;
+	height 		: 38px;
+	padding   	:  2px;
+}
+#ventana_20 .ventana-body {
+	position 	: absolute;
+	scroll-behavior : auto;
+	overflow 		: scroll;
+	left 		:  5px;
+	right 		:  5px;
+	top 		: 40px;
+	bottom 		: 40px;
+	padding 	:  5px;
+}
+#ventana_20 .ventana-footer {
+	position 	: absolute;
+	bottom 		:  2px;
+	left 		:  5px;
+	right 		:  5px;
+	height 		: 38px;
+}
